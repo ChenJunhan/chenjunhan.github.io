@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="shortcut icon" href="/img/bitbug_favicon.ico">
-  <title>vue移动端适配之rem解决方案 | 陈俊翰个人博客</title>
+  <title>解决canvas在h5上绘制模糊问题 | 陈俊翰个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="环境 vue-cli3.0 vue2.x  安装postcss-px2rem-exclude: (将px自动转为rem)1yarn add postcss-px2rem-exclude 在根目录的postcss.config.js添加如下代码：（如果没有则自己新建一个）123456789module.exports =">
-<meta name="keywords" content="vue">
+  <meta name="description" content="问题描述最近h5项目有个绘制圆形进度条的需求，用原生canvas绘制后发现在手机上显示比较模糊，效果不是很好，于是查了一下资料发现在canvas context中也存在一个类似浏览器属性devicePixelRatio的属性，叫作webkitBackingStorePixelRatio，该属性的值决定了浏览器在渲染ca">
+<meta name="keywords" content="canvas,h5">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue移动端适配之rem解决方案">
-<meta property="og:url" content="/img/bitbug_favicon.ico/2020/05/19/vue-mobile-adaptation/index.html">
+<meta property="og:title" content="解决canvas在h5上绘制模糊问题">
+<meta property="og:url" content="/img/bitbug_favicon.ico/2021/07/08/h5canvas-clearer/index.html">
 <meta property="og:site_name" content="陈俊翰个人博客">
-<meta property="og:description" content="环境 vue-cli3.0 vue2.x  安装postcss-px2rem-exclude: (将px自动转为rem)1yarn add postcss-px2rem-exclude 在根目录的postcss.config.js添加如下代码：（如果没有则自己新建一个）123456789module.exports = &amp;#123;  plugins: &amp;#123;    autoprefixer">
-<meta property="og:updated_time" content="2021-05-08T09:02:44.929Z">
+<meta property="og:description" content="问题描述最近h5项目有个绘制圆形进度条的需求，用原生canvas绘制后发现在手机上显示比较模糊，效果不是很好，于是查了一下资料发现在canvas context中也存在一个类似浏览器属性devicePixelRatio的属性，叫作webkitBackingStorePixelRatio，该属性的值决定了浏览器在渲染canvas之前会用几个像素来来存储画布信息，如果手机屏幕的devicePixelR">
+<meta property="og:updated_time" content="2021-07-08T08:27:01.975Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue移动端适配之rem解决方案">
-<meta name="twitter:description" content="环境 vue-cli3.0 vue2.x  安装postcss-px2rem-exclude: (将px自动转为rem)1yarn add postcss-px2rem-exclude 在根目录的postcss.config.js添加如下代码：（如果没有则自己新建一个）123456789module.exports = &amp;#123;  plugins: &amp;#123;    autoprefixer">
+<meta name="twitter:title" content="解决canvas在h5上绘制模糊问题">
+<meta name="twitter:description" content="问题描述最近h5项目有个绘制圆形进度条的需求，用原生canvas绘制后发现在手机上显示比较模糊，效果不是很好，于是查了一下资料发现在canvas context中也存在一个类似浏览器属性devicePixelRatio的属性，叫作webkitBackingStorePixelRatio，该属性的值决定了浏览器在渲染canvas之前会用几个像素来来存储画布信息，如果手机屏幕的devicePixelR">
   
     <link rel="alternative" href="/atom.xml" title="陈俊翰个人博客" type="application/atom+xml">
   
@@ -143,34 +143,31 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-vue-mobile-adaptation" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-h5canvas-clearer" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      vue移动端适配之rem解决方案
+      解决canvas在h5上绘制模糊问题
     </h1>
   
 
         
-        <a href="/2020/05/19/vue-mobile-adaptation/" class="archive-article-date">
-  	<time datetime="2020-05-19T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020/05/19 12:00:00</time>
+        <a href="/2021/07/08/h5canvas-clearer/" class="archive-article-date">
+  	<time datetime="2021-07-08T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021/07/08 15:00:00</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
-<li><strong>vue-cli3.0</strong></li>
-<li><strong>vue2.x</strong></li>
-</ul>
-<h2 id="安装postcss-px2rem-exclude-将px自动转为rem"><a href="#安装postcss-px2rem-exclude-将px自动转为rem" class="headerlink" title="安装postcss-px2rem-exclude: (将px自动转为rem)"></a>安装postcss-px2rem-exclude: (将px自动转为rem)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add postcss-px2rem-exclude</span><br></pre></td></tr></table></figure>
-<p>在根目录的postcss.config.js添加如下代码：（如果没有则自己新建一个）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: &#123;</span><br><span class="line">    autoprefixer: &#123;&#125;,</span><br><span class="line">    <span class="string">"postcss-px2rem-exclude"</span>: &#123;</span><br><span class="line">      remUnit: <span class="number">75</span>,                            <span class="comment">// 设计图的十分之一宽度，我这里是750px的设计图，所以设置为75</span></span><br><span class="line">      exclude: <span class="regexp">/node_modules|folder_name/i</span>    <span class="comment">// 忽略node_modules内的第三方ui库，防止样式出现问题</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><br><a id="more"></a></p>
-<h2 id="在主入口index-html添加如下代码："><a href="#在主入口index-html添加如下代码：" class="headerlink" title="在主入口index.html添加如下代码："></a>在主入口index.html添加如下代码：</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0"</span> /&gt;</span> </span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// 添加屏幕调整监听事件,设置1rem=屏幕分辨率的1/10</span></span></span><br><span class="line"><span class="javascript">    (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="keyword">function</span> <span class="title">autoRootFontSize</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.documentElement.style.fontSize = <span class="built_in">document</span>.documentElement.clientWidth / <span class="number">10</span> + <span class="string">'px'</span>;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">window</span>.addEventListener(<span class="string">'resize'</span>, autoRootFontSize);</span></span><br><span class="line"><span class="undefined">      autoRootFontSize();</span></span><br><span class="line"><span class="undefined">    &#125;)();</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>lib-flexible 淘宝弹性布局方案也可以与postcss-px2rem-exclude配合解决适配问题，但是超过540px的屏幕(比如ipad)效果不是很好，所以这里我就不具体说明了</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>最近h5项目有个绘制圆形进度条的需求，用原生canvas绘制后发现在手机上显示比较模糊，效果不是很好，于是查了一下资料发现在canvas context中也存在一个类似浏览器属性devicePixelRatio的属性，叫作webkitBackingStorePixelRatio，该属性的值决定了浏览器在渲染canvas之前会用几个像素来来存储画布信息，如果手机屏幕的devicePixelRatio值越高，就会导致canvas绘制的图案要用更多的像素去绘制，跟图片放大就会变得模糊类似，所以我们需要根据不同的屏幕渲染比缩放canvas绘制的大小，即改变canvas的宽度跟高度。</p>
+<h2 id="第一种解决方案"><a href="#第一种解决方案" class="headerlink" title="第一种解决方案"></a>第一种解决方案</h2><p>简单粗暴，直接使用github上的一个库即可<a href="https://github.com/jondavidjohn/hidpi-canvas-polyfill" target="_blank" rel="noopener">hidpi-canvas-polyfill</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">&lt;script src=<span class="string">".../dist/hidpi-canvas.min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">".../your-canvas-stuff.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure><br><br><a id="more"></a></p>
+<h2 id="第二种解决方法"><a href="#第二种解决方法" class="headerlink" title="第二种解决方法"></a>第二种解决方法</h2><p>由于项目是用rem适配各种屏幕，而canvas的width属性不支持rem，我不能直接在canvas标签上使用rem设置画布大小，而上面的库是根据canvas标签属性width和height的大小进行适配，因此需要获取屏幕渲染比，在绘制画布时涉及到大小、坐标的时候都要乘以这个渲染比，具体如下（vue）：<br>html：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- canvas的宽度跟高度需要乘以像素比，style设置原来的宽度高度 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">:width</span>=<span class="string">"300 * ratio"</span> <span class="attr">:height</span>=<span class="string">"300 * ratio"</span> <span class="attr">:style</span>=<span class="string">"&#123;width: '300px', height: '300px'&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>js部分：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">data() &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    canvas: <span class="literal">null</span>,</span><br><span class="line">    ctx: <span class="literal">null</span>,</span><br><span class="line">    ratio: <span class="number">1</span> <span class="comment">// 像素比</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">mounted: &#123;</span><br><span class="line">  <span class="keyword">this</span>.canvas = <span class="built_in">document</span>.getElementById(id)</span><br><span class="line">  <span class="keyword">this</span>.ctx = <span class="keyword">this</span>.canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">  <span class="keyword">this</span>.ratio = <span class="keyword">this</span>.getPixelRatio(<span class="keyword">this</span>.ctx)</span><br><span class="line">  <span class="keyword">this</span>.ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span> * <span class="keyword">this</span>.ratio, <span class="number">100</span> * <span class="keyword">this</span>.ratio) <span class="comment">// 清理100*100大小的画布宽度跟高度都要乘以像素比</span></span><br><span class="line">  <span class="keyword">this</span>.ctx.arc(<span class="number">50</span> * <span class="keyword">this</span>.ratio, <span class="number">50</span> * <span class="keyword">this</span>.ratio, <span class="number">10</span> * <span class="keyword">this</span>.ratio, <span class="built_in">Math</span>.PI, <span class="number">2</span> * <span class="built_in">Math</span>.PI) <span class="comment">// 绘制弧度时圆心的x，y坐标，还有半径都要乘以像素比</span></span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">  getPixelRatio (context) &#123; <span class="comment">// 获取屏幕像素比</span></span><br><span class="line">    <span class="keyword">let</span> backingStore = context.backingStorePixelRatio ||</span><br><span class="line">      context.webkitBackingStorePixelRatio ||</span><br><span class="line">      context.mozBackingStorePixelRatio ||</span><br><span class="line">      context.msBackingStorePixelRatio ||</span><br><span class="line">      context.oBackingStorePixelRatio ||</span><br><span class="line">      context.backingStorePixelRatio || <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> (<span class="built_in">window</span>.devicePixelRatio || <span class="number">1</span>) / backingStore</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure><br>这样就可以了，实际上hidpi-canvas-polyfill也是利用这个原理，修改了canvas原型对象，使得fillRect, clearRect, strokeRect, moveTo, lineTo, arc等绘制图形的方法大小乘以像素比。</p>
+<p>具体实现代码放在<a href="https://github.com/ChenJunhan/vue-cricle-progress-line/blob/main/index.vue" target="_blank" rel="noopener">github</a>上。</p>
 
       
 
@@ -210,7 +207,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">canvas</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">h5</a>
         		</li>
       		
 		</ul>
@@ -266,7 +267,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:/img/bitbug_favicon.ico/2020/05/19/vue-mobile-adaptation/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http:/img/bitbug_favicon.ico/2021/07/08/h5canvas-clearer/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -280,18 +281,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/09/achieve-promise/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          promise简单实现
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/04/21/linux-iptables/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">linux上nginx配置端口8000无法公网访问</div>
+    <a href="/2021/05/13/jssdk-fiddler/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用fiddler本地调试微信jssdk的问题</div>
       <i class="icon-circle-right"></i>
     </a>
   
